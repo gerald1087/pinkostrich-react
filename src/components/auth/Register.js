@@ -22,23 +22,24 @@ class Register extends React.Component {
         e.preventDefault();
         var apiBaseUrl = "http://localhost:3001/api/";
         var payload = {
-            "name": this.state.name,
-            "email": this.state.email,
-            "password": this.state.password,
-            "address_line1": this.state.address_line1,
-            "address_line2": this.state.address_line2,
-            "city": this.state.city,
-            "state": this.state.state,
-            "zip": this.state.zip
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password,
+            address_line1: this.state.address_line1,
+            address_line2: this.state.address_line2,
+            city: this.state.city,
+            state: this.state.state,
+            zip: this.state.zip
         }
+        console.log(payload)
         axios.post(apiBaseUrl + "register", payload)
-            .then(function (data) {
-                console.log(data);
+            .then(function (response) {
+                console.log(response);
             }).catch(function (error) {
                 console.log(error);
             });
             console.log("values", this.state.name, this.state.email, this.state.address_line1, this.state.password);
-    }
+        }
 
 
     render() {
@@ -47,42 +48,42 @@ class Register extends React.Component {
                 <form>
                     <div className="form-group">
                         <label>Name</label>
-                        <input name="name" type="name" className="form-control" aria-describedby="emailHelp" onChange={(event, newValue) => this.setState({ name: newValue })} />
+                        <input name="name" type="name" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ name: event.target.value })} />
                         
                     </div>
                     <div className="form-group">
                         <label >Email address</label>
-                        <input name="email" type="email" className="form-control" aria-describedby="emailHelp" onChange={(event, newValue) => this.setState({ email: newValue })}/>
+                        <input name="email" type="email" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ email: event.target.value })}/>
                         
                     </div>
                     <div className="form-group">
                         <label >Password</label>
-                        <input name="password" type="password" className="form-control" aria-describedby="emailHelp" onChange={(event, newValue) => this.setState({ password: newValue })}/>
+                        <input name="password" type="password" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ password: event.target.value })}/>
                         
                     </div>
                     <div className="form-group">
                         <label >Address Line 1</label>
-                        <input name="address_line1" type="address" className="form-control" aria-describedby="emailHelp" onChange={(event, newValue) => this.setState({ address_line1: newValue })}/>
+                        <input name="address_line1" type="address" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ address_line1: event.target.value })}/>
                         
                     </div>
                     <div className="form-group">
                         <label >Address Line 2</label>
-                        <input name="address_line2" type="address" className="form-control" aria-describedby="emailHelp" onChange={(event, newValue) => this.setState({ address_line2: newValue })}/>
+                        <input name="address_line2" type="address" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ address_line2: event.target.value })}/>
                         
                     </div>
                     <div className="form-group">
                         <label >City</label>
-                        <input name="city" type="city" className="form-control" aria-describedby="emailHelp" onChange={(event, newValue) => this.setState({ city: newValue })}/>
+                        <input name="city" type="city" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ city: event.target.value })}/>
                         
                     </div>
                     <div className="form-group">
                         <label >State</label>
-                        <input name="state" type="state" className="form-control" aria-describedby="emailHelp" onChange={(event, newValue) => this.setState({ state: newValue })}/>
+                        <input name="state" type="state" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ state: event.target.value })}/>
                         
                     </div>
                     <div className="form-group">
                         <label >Zip</label>
-                        <input name="zip" type="zip" className="form-control" aria-describedby="emailHelp" onChange={(event, newValue) => this.setState({ zip: newValue })}/>
+                        <input name="zip" type="zip" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ zip: event.target.value })}/>
                         
                     </div>
                     <button type="submit" onClick={(event) => this.handleClick(event)} className="btn btn-primary">Submit</button>
