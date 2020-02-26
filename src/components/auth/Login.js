@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { Route } from 'react-router-dom'
 
 class Login extends React.Component {
 
@@ -8,7 +7,8 @@ class Login extends React.Component {
         super(props);
         this.state = {
         email:'',
-        password:''
+        password:'',
+        loggedIn: false
         }
     }
 
