@@ -7,37 +7,28 @@ class Register extends React.Component {
         super(props);
         this.state = {
             name: '',
-            email: '',
-            password: '',
-            is_admin: '',
-            address_line1: '',
-            address_line2: '',
-            city: '',
-            state: '',
-            zip: '',
+            category: '',
+            price: '',
+            image: ''
         }
     }
 
     handleClick(e) {
         e.preventDefault();
-        var apiBaseUrl = "http://localhost:3001/api/";
+        var apiBaseUrl = "http://localhost:3001/api/products";
         var payload = {
             "name": this.state.name,
-            "email": this.state.email,
-            "password": this.state.password,
-            "address_line1": this.state.address_line1,
-            "address_line2": this.state.address_line2,
-            "city": this.state.city,
-            "state": this.state.state,
-            "zip": this.state.zip
+            "category": this.state.email,
+            "price": this.state.password,
+            "image": this.state.address_line1,
         }
-        axios.post(apiBaseUrl + "register", payload)
+        axios.post(apiBaseUrl + "products", payload)
             .then(function (data) {
                 console.log(data);
             }).catch(function (error) {
                 console.log(error);
             });
-            console.log("values", this.state.name, this.state.email, this.state.address_line1, this.state.password);
+            console.log("values", this.state.name, this.state.category, this.state.price, this.state.image);
     }
 
 
