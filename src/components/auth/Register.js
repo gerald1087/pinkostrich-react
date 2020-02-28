@@ -7,20 +7,15 @@ class Register extends React.Component {
         super(props);
         this.state = {
             name: '',
-            email: '',
-            password: '',
-            is_admin: '',
-            address_line1: '',
-            address_line2: '',
-            city: '',
-            state: '',
-            zip: '',
+            category: '',
+            price: '',
+            image: ''
         }
     }
 
     handleClick(e) {
         e.preventDefault();
-        var apiBaseUrl = "http://localhost:3001/api/";
+        var apiBaseUrl = "http://localhost:3001/api/products";
         var payload = {
             name: this.state.name,
             email: this.state.email,
