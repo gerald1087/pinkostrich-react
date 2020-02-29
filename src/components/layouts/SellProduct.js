@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 
-class ListProduct extends React.Component {
+class SellProduct extends React.Component {
 
     constructor(props) {
         super(props);
@@ -20,7 +20,7 @@ class ListProduct extends React.Component {
         var apiBaseUrl = "http://localhost:3001/api/";
         var payload = {
             "name": this.state.name,
-            "category": this.state.email,
+            "category": this.state.category,
             "price": this.state.price,
             "description": this.state.description,
             "available_quantity": this.state.available_quantity,
@@ -41,32 +41,32 @@ class ListProduct extends React.Component {
                 <form>
                     <div className="form-group">
                         <label>Name</label>
-                        <input name="name" type="name" className="form-control" aria-describedby="emailHelp" onChange={(event, newValue) => this.setState({ name: newValue })} />
+                        <input name="name" type="name" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ name: event.target.value })} />
                         
                     </div>
                     <div className="form-group">
                         <label >Category</label>
-                        <input name="category" type="category" className="form-control" aria-describedby="emailHelp" onChange={(event, newValue) => this.setState({ email: newValue })}/>
+                        <input name="category" type="category" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ category: event.target.value })}/>
                         
                     </div>
                     <div className="form-group">
                         <label >Price</label>
-                        <input name="price" type="" className="form-control" aria-describedby="emailHelp" onChange={(event, newValue) => this.setState({ password: newValue })}/>
+                        <input name="price" type="" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ price: event.target.value })}/>
                         
                     </div>
                     <div className="form-group">
                         <label >Description</label>
-                        <input name="description" type="" className="form-control" aria-describedby="emailHelp" onChange={(event, newValue) => this.setState({ address_line1: newValue })}/>
+                        <input name="description" type="" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ description: event.target.value })}/>
                         
                     </div>
                     <div className="form-group">
                         <label >Available Quantity</label>
-                        <input name="quantity" type="address" className="form-control" aria-describedby="emailHelp" onChange={(event, newValue) => this.setState({ address_line2: newValue })}/>
+                        <input name="quantity" type="address" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ available_quantity: event.target.value })}/>
                         
                     </div>
                     <div className="form-group">
                         <label >Image</label>
-                        <input name="image" type="url" className="form-control" aria-describedby="emailHelp" onChange={(event, newValue) => this.setState({ city: newValue })}/>
+                        <input name="image" type="url" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ image: event.target.value })}/>
                         </div>
                     <button type="submit" onClick={(event) => this.handleClick(event)} className="btn btn-primary">Submit</button>
                 </form>
@@ -75,4 +75,4 @@ class ListProduct extends React.Component {
     }
 }
 
-export default ListProduct
+export default SellProduct
