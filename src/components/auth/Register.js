@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
+
 class Register extends React.Component {
 
     constructor(props) {
@@ -15,7 +16,7 @@ class Register extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
-        var apiBaseUrl = "http://localhost:3001/api/products";
+        var apiBaseUrl = "http://localhost:3001/api/";
         var payload = {
             name: this.state.name,
             email: this.state.email,
@@ -24,7 +25,8 @@ class Register extends React.Component {
             address_line2: this.state.address_line2,
             city: this.state.city,
             state: this.state.state,
-            zip: this.state.zip
+            zip: this.state.zip,
+            is_admin: false,
         }
         console.log(payload)
         axios.post(apiBaseUrl + "register", payload)
