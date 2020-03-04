@@ -5,8 +5,8 @@ import { Route } from 'react-router-dom';
 
 class EditUserPage extends React.Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             name: "",
             email: "",
@@ -18,10 +18,11 @@ class EditUserPage extends React.Component {
             zip: " "
         }
     }
-    handleClick(e) {
+    handleSubmit(e) {
         e.preventDefault();
         var apiBaseUrl = "http://localhost:3001/api/";
         var payload = {
+            id: this.state.id,
             name: this.state.name,
             email: this.state.email,
             password: this.state.password,
@@ -32,13 +33,13 @@ class EditUserPage extends React.Component {
             zip: this.state.zip
         }
         console.log(payload)
-        axios.put(apiBaseUrl + "users", payload)
+        axios.put(apiBaseUrl + "users", payload.id)
             .then(function (response) {
                 console.log(response);
             }).catch(function (error) {
                 console.log(error);
             });
-            console.log("values", this.state.name, this.state.email, this.state.address_line1, this.state.password);
+            console.log("values", this.state.id, this.state.name, this.state.email, this.state.address_line1, this.state.password);
         }
 
         render() {
@@ -85,7 +86,7 @@ class EditUserPage extends React.Component {
                             <input name="zip" type="zip" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ zip: event.target.value })}/>
                             
                         </div>
-                        <button type="submit" onClick={(event) => this.handleClick(event)} className="btn btn-primary">Submit</button>
+                        <button type="submit" onSubmit={(event) => {this.handleSubmit(event)}}className="btn btn-primary">Submit</button>
                     </form>
                 </div>
             )

@@ -8,7 +8,11 @@ import Login from "./components/auth/Login";
 import User from "./User"
 import EditUserPage from "./EditUserPage"
 import UsersOrders from "./UsersOrders"
-
+import ViewOrder from "./ViewOrder"
+import LandingPage from "./components/layouts/LandingPage";
+import Products from "./components/layouts/Products";
+import SellProduct from "./components/layouts/SellProduct";
+import Product from "./components/layouts/Product"
 
 
 
@@ -20,9 +24,14 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/user" component={User} />
+          <Route exact path="/users/:id" component={User} />
           <Route exact path="/edituserpage" component={EditUserPage} />
           <Route exact path="/usersorders" component={UsersOrders} />
+          <Route exact path="/vieworder" component={ViewOrder} />
+          <Route exact path="/sellproduct" component={SellProduct} />
+          <Route exact path="/products" component={Products} />
+          <Route exact path="/products/:id" component={Product} />
+          <Route exact path="/landing" component={LandingPage} />
         </div>
 
 

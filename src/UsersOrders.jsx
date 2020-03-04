@@ -14,19 +14,20 @@ class UsersOrders extends React.Component {
         }
     }
     // componentDidMount() {
-    //     axios.get()
+    //     axios.get("http://localhost:3001/api/users/orders/:id")
     //     .then()
     // }
+
     handleClick(e) {
         e.preventDefault();
-        var apiBaseUrl = "http://localhost:3001/api/";
+        var apiBaseUrl = "http://localhost:3001/api/users/";
         var payload = {
             id: this.state.id,
             order_date: this.state.order_date,
             order_status: this.state.order_status,
         }
         console.log(payload)
-        axios.get(apiBaseUrl + "orders", payload)
+        axios.get(apiBaseUrl + "orders", payload.id)
             .then(function (response) {
                 console.log(response);
             }).catch(function (error) {
@@ -42,16 +43,16 @@ class UsersOrders extends React.Component {
             <div class="list-group">
 <a href="#" class="list-group-item list-group-item-action active">
 <div class="d-flex w-100 justify-content-between">
-<h5 class="mb-1">Order Number" + value={this.state.id[0]}</h5>
+<h5 class="mb-1">"Order Number" + value={this.state.id[0]}</h5>
 <small>value={this.state.order_date}</small>
 </div>
-<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-<small>Donec id elit non mi porta.</small>
+<p class="mb-1">value={this.state.order_status}</p>
+<small><button>View Order</button></small>
 </a>
 <a href="#" class="list-group-item list-group-item-action">
 <div class="d-flex w-100 justify-content-between">
-<h5 class="mb-1">List group item heading</h5>
-<small class="text-muted">3 days ago</small>
+<h5 class="mb-1">"Order Number" + value={this.state.id[1]}</h5>
+<small class="text-muted">value={this.state.order_date}</small>
 </div>
 <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
 <small class="text-muted">Donec id elit non mi porta.</small>

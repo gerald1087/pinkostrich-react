@@ -24,6 +24,11 @@ class Home extends Component {
                                 Log In
                             </Link>
                         </div>
+                        <div className="col s6">
+                            <Link to="/users/:id" style={{ width: "140px", borderRadius: "3px", letterSpacing: "1.5px" }} className="btn btn-large btn-flat waves-effect white black-text">
+                                Profile
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>

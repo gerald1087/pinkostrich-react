@@ -28,6 +28,7 @@ class Register extends React.Component {
             zip: this.state.zip,
             is_admin: false,
         }
+        window.location = '/login'
         console.log(payload)
         axios.post(apiBaseUrl + "register", payload)
             .then(function (response) {
