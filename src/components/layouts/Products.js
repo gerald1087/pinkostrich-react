@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import ProductList from './ProductList';
 import Product from './Product';
+import Header from "./Header"
 
 import { Switch, Route } from 'react-router-dom'
 
@@ -28,17 +29,21 @@ class Products extends React.Component {
     render() {
         let productsJSX = this.state.products.map((product, index) => {
 
-            return <ProductList key={index} {...product}/>
+            return <ProductList key={index} {...product} user={this.state.user} />
         });
 
         return(
             <div>
+                <header>
+                    <Header/>
+                </header>
                 <div className="Product">
                     
                     <Switch>
-                        <Route exact path='/products' render={ () => productsJSX }/>
-                        <Route path='/products/:id' component={Product}/>
+                        <Route exact path={'/products'} render={ () => productsJSX }/>
+                        <Route path={'/products/:id'} render={props => (<Product {...props} user={this.state.user}/>)} />
                     </Switch>
+         
 
                 </div>
             </div>

@@ -1,31 +1,33 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import Register from "../auth/Register";
+import Login from "../auth/Login";
 
 class Home extends Component {
+constructor(props) {
+    super(props);
+
+    this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
+    this.handleSuccessfulRegistration = this.handleSuccessfulRegistration.bind(this);
+}
+
+handleSuccessfulLogin(data) {
+    this.props.handleLogin(data);
+    this.props.history.push('/pinkostrich');
+}
+
+handleSuccessfulRegistration(data) {
+    this.props.history.push('/');
+}
+
+
     render() {
         return (
-            <div className="container valign-wrapper">
-                <div className="row">
-                    <div className="col s12 center-align">
-                        <h4>
-                            Welcome to PinkOstrich!
-                        </h4>
-                        <p className="flow-text grey-text text-darken-1">
-                            Buy and sell your kicks!
-                        </p>
-                        <br />
-                        <div className="col s6">
-                            <Link to="/register" style={{ width: "140px", borderRadius: "3px", letterSpacing: "1.5px" }} className="btn btn-large waves-effect waves-light hoverable blue accent-3">
-                                Register
-                            </Link>
-                        </div>
-                        <div className="col s6">
-                            <Link to="/login" style={{ width: "140px", borderRadius: "3px", letterSpacing: "1.5px" }} className="btn btn-large btn-flat waves-effect white black-text">
-                                Log In
-                            </Link>
-                        </div>
-                    </div>
-                </div>
+            <div>
+                <h1>Status: {this.props.loggedIn}</h1>
+                <h1>Register</h1>
+                <Register handleSuccessfulRegistration={this.handleSuccessfulRegistration} />
+                <h1>Login</h1>
+                <Login handleSuccessfulLogin={this.handleSuccessfulLogin}/>
             </div>
         );
     }
