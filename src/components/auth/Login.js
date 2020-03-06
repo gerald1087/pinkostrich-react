@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { Component } from "react";
 import axios from 'axios';
-import { Redirect } from "react-router-dom";
 
-class Login extends React.Component {
+class Login extends Component {
 
     constructor(props){
         super(props);
         this.state = {
         email:'',
         password:'',
-        loggedIn: false
         };
         this.handleClick = this.handleClick.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
     }
 
     handleClick(e) {
@@ -20,14 +25,16 @@ class Login extends React.Component {
         var payload = {
         email: this.state.email,
         password: this.state.password,
-        loggedIn: true
         }
-        window.location = '/landing'
         console.log(payload)
         axios.post(apiBaseUrl + 'login', payload)
-        .then(function (response) {
-        console.log(response);
-        }).catch(function (error) {
+        .then(response => {
+            if (response.statusText === 'OK') {
+                this.props.handleSuccessfulLogin(response.data)
+                alert('Welcome!')
+            }
+
+        }).catch(error =>  {
         console.log(error);
         });
         }
@@ -38,17 +45,14 @@ class Login extends React.Component {
                     <form>
                         <div className="form-group">
                             <label htmlFor="exampleInputEmail1">Email address</label>
-                            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(event) => this.setState({ email: event.target.value })}/>
+                            <input name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={this.state.email} onChange={this.handleChange}/>
                             <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                         <div className="form-group">
                             <label htmlFor="exampleInputPassword1">Password</label>
-                            <input type="password" className="form-control" id="exampleInputPassword1" onChange={(event) => this.setState({ password: event.target.value })}/>
+                            <input name="password" type="password" className="form-control" id="exampleInputPassword1" value={this.state.password} onChange={this.handleChange}/>
                         </div>
-                        <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                            <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-                        </div>
+                        
                         <button type="submit" onClick={(event) => this.handleClick(event)} className="btn btn-primary">Submit</button>
                     </form>
                 </div>
