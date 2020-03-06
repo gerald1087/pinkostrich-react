@@ -1,38 +1,82 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
-// import './App.css';
-import Navbar from "./components/layouts/Navbar";
-import Home from "./components/layouts/Home";
-import Register from "./components/auth/Register";
-import Login from "./components/auth/Login";
-import User from "./User"
 import EditUserPage from "./EditUserPage"
 import UsersOrders from "./UsersOrders"
 import ViewOrder from "./ViewOrder"
-import LandingPage from "./components/layouts/LandingPage";
+import { Switch, Route } from "react-router-dom";
+import Navbar from "./components/layouts/Navbar";
+import Home from "./components/layouts/Home";
+// import Register from "./components/auth/Register";
+// import Login from "./components/auth/Login";
+import PinkOstrich from "./components/layouts/PinkOstrich";
 import Products from "./components/layouts/Products";
 import SellProduct from "./components/layouts/SellProduct";
 import Product from "./components/layouts/Product"
+import Profile from "./components/layouts/Profile"
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 
 
 class App extends Component {
+
+constructor() {
+  super();
+
+  this.state = {
+    loggedIn: "Not_Logged_In",
+    user: {}
+  };
+
+  this.handleLogin = this.handleLogin.bind(this);
+  this.handleLogout = this.handleLogout.bind(this);
+}
+
+
+handleLogin(data) {
+  this.setState({
+    loggedIn: "Logged_In",
+    user: data
+  })
+}
+
+handleLogout() {
+  this.setState({
+    loggedIn: "Not_Logged_In",
+    user: {}
+  })
+  this.props.history.push('/')
+}
+
+
+
   render() {
     return (
-        <div className="App">
-          <Navbar />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={Login} />
+
+      <div className="App">
+        <Switch>
+          <Route 
+          exact 
+          path={"/"} 
+          render={props => (
+          <Home {...props} handleLogin={this.handleLogin} loggedIn={this.state.loggedIn} />)} />
+
+          <Route exact path="/sellproduct" component={SellProduct} />
+          <Route exact path="/products" render={props => (<Products {...props} user={this.state.user} loggedIn={this.state.loggedIn}/>)} />
+          <Route exact path="/products/:id" render={props => (<Product {...props} user={this.state.user} loggedIn={this.state.loggedIn}/>)} />
+          <Route exact path="/profile" render={props => (<Profile {...props} user={this.state.user} loggedIn={this.state.loggedIn}/>)} />
+      
           <Route exact path="/users/:id" component={User} />
           <Route exact path="/edituserpage" component={EditUserPage} />
           <Route exact path="/usersorders" component={UsersOrders} />
-          <Route exact path="/vieworder" component={ViewOrder} />
-          <Route exact path="/sellproduct" component={SellProduct} />
-          <Route exact path="/products" component={Products} />
-          <Route exact path="/products/:id" component={Product} />
-          <Route exact path="/landing" component={LandingPage} />
-        </div>
+          <Route exact path="/vieworder" component={ViewOrder} />    
+      <Route 
+          exact 
+          path={"/pinkostrich"} 
+          render={props => (
+          <PinkOstrich {...props} user={this.state.user} loggedIn={this.state.loggedIn} />
+          )} />
+        </Switch>
+
+      </div>
 
 
     );
