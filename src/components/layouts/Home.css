@@ -1,0 +1,22 @@
+body {
+    background-color: #FFC0CB;
+    color: #E73895;
+}
+
+.title {
+    text-align: center;
+}
+
+.register {
+    position: absolute;
+    right: 100px;
+}
+
+.login {
+    position: absolute;
+    left: 100px;
+}
+
+.image {
+    
+}
