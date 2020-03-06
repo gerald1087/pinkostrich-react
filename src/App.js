@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import EditUserPage from "./EditUserPage"
+import UsersOrders from "./UsersOrders"
+import ViewOrder from "./ViewOrder"
 import { Switch, Route } from "react-router-dom";
-
 import Home from "./components/layouts/Home";
 import PinkOstrich from "./components/layouts/PinkOstrich";
 import Products from "./components/layouts/Products";
@@ -44,6 +46,7 @@ class App extends Component {
 
   render() {
     return (
+
       <div className="App">
         <Switch>
           <Route

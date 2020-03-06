@@ -22,6 +22,8 @@ class Login extends Component {
             email: '',
             password: '',
         };
+
+  
         this.handleClick = this.handleClick.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
@@ -30,7 +32,11 @@ class Login extends Component {
         this.setState({
             [event.target.name]: event.target.value
         })
+
     }
+
+
+    
 
     handleClick(e) {
         e.preventDefault()
