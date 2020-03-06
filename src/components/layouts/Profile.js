@@ -7,7 +7,9 @@ class Profile extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            
+        }
     }
 
     handleOrdersClick(e) {
@@ -27,14 +29,15 @@ class Profile extends React.Component {
 
     handleDeleteClick(e) {
         e.preventDefault()
-        var apiBaseUrl = "http://localhost:3001/api/";
-        var payload = {
-        id: this.props.user.id,
-        }
-        console.log(payload)
-        axios.delete(apiBaseUrl + 'deleteprofile', payload)
+        axios.delete(`http://localhost:3001/api/deleteprofile/${this.props.user.id}`)
         .then(response => {
-        }).catch(error =>  {
+            alert("profile successfully deleted")
+            this.props.history.push('/')
+        window.location.reload()
+        console.log(response.data , "deleted message" )
+        }
+            
+        ).catch(error =>  {
         console.log(error);
         });
         }
