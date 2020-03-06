@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios'
 
+
 class Register extends Component {
 
     constructor(props) {
@@ -36,7 +37,8 @@ class Register extends Component {
             address_line2: this.state.address_line2,
             city: this.state.city,
             state: this.state.state,
-            zip: this.state.zip
+            zip: this.state.zip,
+            is_admin: false,
         }
         console.log(payload)
         axios.post(apiBaseUrl + "register", payload)

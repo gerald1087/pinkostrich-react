@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import EditUserPage from "./EditUserPage"
+import UsersOrders from "./UsersOrders"
+import ViewOrder from "./ViewOrder"
 import { Switch, Route } from "react-router-dom";
-
 import Navbar from "./components/layouts/Navbar";
 import Home from "./components/layouts/Home";
 // import Register from "./components/auth/Register";
@@ -48,6 +50,7 @@ handleLogout() {
 
   render() {
     return (
+
       <div className="App">
         <Switch>
           <Route 
@@ -55,11 +58,17 @@ handleLogout() {
           path={"/"} 
           render={props => (
           <Home {...props} handleLogin={this.handleLogin} loggedIn={this.state.loggedIn} />)} />
+
           <Route exact path="/sellproduct" component={SellProduct} />
           <Route exact path="/products" render={props => (<Products {...props} user={this.state.user} loggedIn={this.state.loggedIn}/>)} />
           <Route exact path="/products/:id" render={props => (<Product {...props} user={this.state.user} loggedIn={this.state.loggedIn}/>)} />
           <Route exact path="/profile" render={props => (<Profile {...props} user={this.state.user} loggedIn={this.state.loggedIn}/>)} />
-          <Route 
+      
+          <Route exact path="/users/:id" component={User} />
+          <Route exact path="/edituserpage" component={EditUserPage} />
+          <Route exact path="/usersorders" component={UsersOrders} />
+          <Route exact path="/vieworder" component={ViewOrder} />    
+      <Route 
           exact 
           path={"/pinkostrich"} 
           render={props => (
