@@ -18,8 +18,21 @@ class EditUserPage extends React.Component {
             zip: " "
         }
     }
-    handleSubmit(e) {
-        e.preventDefault();
+    handleChange = event => {
+    this.setState({ name: event.target.value });
+  }
+  handleSubmit = event => {
+    event.preventDefault();
+  const user = {
+      name: this.state.name,
+      email: this.state.email,
+      address_line1: this.state.address_line1,
+            address_line2: this.state.address_line2,
+            city: this.state.city,
+            state: this.state.state,
+            zip: this.state.zip
+    };
+  
         var apiBaseUrl = "http://localhost:3001/api/";
         var payload = {
             id: this.state.id,
@@ -33,7 +46,7 @@ class EditUserPage extends React.Component {
             zip: this.state.zip
         }
         console.log(payload)
-        axios.put(apiBaseUrl + "users", payload.id)
+        axios.put(apiBaseUrl + "users" + payload.id, user)
             .then(function (response) {
                 console.log(response);
             }).catch(function (error) {
@@ -45,48 +58,48 @@ class EditUserPage extends React.Component {
         render() {
             return (
                 <div>
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             <label>Name</label>
-                            <input name="name" type="name" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ name: event.target.value })} />
+                            <input name="name" type="name" onChange={this.handleChange} className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ name: event.target.value })} />
                             
                         </div>
                         <div className="form-group">
                             <label >Email address</label>
-                            <input name="email" type="email" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ email: event.target.value })}/>
+                            <input name="email" type="email" onChange={this.handleChange} className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ email: event.target.value })}/>
                             
                         </div>
                         <div className="form-group">
                             <label >Password</label>
-                            <input name="password" type="password" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ password: event.target.value })}/>
+                            <input name="password" type="password" onChange={this.handleChange} className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ password: event.target.value })}/>
                             
                         </div>
                         <div className="form-group">
                             <label >Address Line 1</label>
-                            <input name="address_line1" type="address" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ address_line1: event.target.value })}/>
+                            <input name="address_line1" type="address" onChange={this.handleChange} className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ address_line1: event.target.value })}/>
                             
                         </div>
                         <div className="form-group">
                             <label >Address Line 2</label>
-                            <input name="address_line2" type="address" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ address_line2: event.target.value })}/>
+                            <input name="address_line2" type="address" onChange={this.handleChange} className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ address_line2: event.target.value })}/>
                             
                         </div>
                         <div className="form-group">
                             <label >City</label>
-                            <input name="city" type="city" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ city: event.target.value })}/>
+                            <input name="city" type="city" onChange={this.handleChange} className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ city: event.target.value })}/>
                             
                         </div>
                         <div className="form-group">
                             <label >State</label>
-                            <input name="state" type="state" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ state: event.target.value })}/>
+                            <input name="state" type="state" onChange={this.handleChange} className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ state: event.target.value })}/>
                             
                         </div>
                         <div className="form-group">
                             <label >Zip</label>
-                            <input name="zip" type="zip" className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ zip: event.target.value })}/>
+                            <input name="zip" type="zip" onChange={this.handleChange} className="form-control" aria-describedby="emailHelp" onChange={(event) => this.setState({ zip: event.target.value })}/>
                             
                         </div>
-                        <button type="submit" onSubmit={(event) => {this.handleSubmit(event)}}className="btn btn-primary">Submit</button>
+                        <button type="submit" className="btn btn-primary">Submit</button>
                     </form>
                 </div>
             )

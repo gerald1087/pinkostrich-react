@@ -13,13 +13,7 @@ class UsersOrders extends React.Component {
             order_status: ""
         }
     }
-    // componentDidMount() {
-    //     axios.get("http://localhost:3001/api/users/orders/:id")
-    //     .then()
-    // }
-
-    handleClick(e) {
-        e.preventDefault();
+    componentDidMount() {
         var apiBaseUrl = "http://localhost:3001/api/users/";
         var payload = {
             id: this.state.id,
@@ -40,32 +34,41 @@ class UsersOrders extends React.Component {
     render() {
         return (
             <div>
-            <div class="list-group">
-<a href="#" class="list-group-item list-group-item-action active">
-<div class="d-flex w-100 justify-content-between">
-<h5 class="mb-1">"Order Number" + value={this.state.id[0]}</h5>
+            <div className="list-group">
+<a href="#" className="list-group-item list-group-item-action active">
+<div className="d-flex w-100 justify-content-between">
+<h5 className="mb-1">"Order Number" + value={this.state.id[0]}</h5>
 <small>value={this.state.order_date}</small>
 </div>
-<p class="mb-1">value={this.state.order_status}</p>
+<p className="mb-1">value={this.state.order_status}</p>
 <small><button>View Order</button></small>
 </a>
-<a href="#" class="list-group-item list-group-item-action">
-<div class="d-flex w-100 justify-content-between">
-<h5 class="mb-1">"Order Number" + value={this.state.id[1]}</h5>
-<small class="text-muted">value={this.state.order_date}</small>
+<a href="#" className="list-group-item list-group-item-action">
+<div className="d-flex w-100 justify-content-between">
+<h5 className="mb-1">"Order Number" + value={this.state.id[1]}</h5>
+<small className="text-muted">value={this.state.order_date}</small>
 </div>
-<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-<small class="text-muted">Donec id elit non mi porta.</small>
+<p className="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+<small className="text-muted">Donec id elit non mi porta.</small>
 </a>
-<a href="#" class="list-group-item list-group-item-action">
-<div class="d-flex w-100 justify-content-between">
-<h5 class="mb-1">List group item heading</h5>
-<small class="text-muted">3 days ago</small>
+<a href="#" className="list-group-item list-group-item-action active">
+<div className="d-flex w-100 justify-content-between">
+<h5 className="mb-1">"Order Number" + value={this.state.id[2]}</h5>
+<small>value={this.state.order_date}</small>
 </div>
-<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-<small class="text-muted">Donec id elit non mi porta.</small>
+<p className="mb-1">value={this.state.order_status}</p>
+<small><button>View Order</button></small>
+</a>
+<a href="#" className="list-group-item list-group-item-action">
+<div className="d-flex w-100 justify-content-between">
+<h5 className="mb-1">"Order Number" + value={this.state.id[3]}</h5>
+<small className="text-muted">value={this.state.order_date}</small>
+</div>
+<p className="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+<small className="text-muted">Donec id elit non mi porta.</small>
 </a>
 </div>
+
             </div>
 
         )
