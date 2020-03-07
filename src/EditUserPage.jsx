@@ -8,6 +8,7 @@ class EditUserPage extends React.Component {
     constructor() {
         super();
         this.state = {
+            id: [0],
             name: "",
             email: "",
             password: "",
@@ -19,23 +20,34 @@ class EditUserPage extends React.Component {
         }
     }
     handleChange = event => {
-    this.setState({ name: event.target.value });
+    this.setState({ 
+            id: event.target.value[0],
+            name: event.target.value,
+            email: event.target.value,
+            password: event.target.value,
+            address_line1: event.target.value,
+            address_line2: event.target,
+            city: event.target.value,
+            state: event.target.value,
+            zip: event.target.value });
   }
   handleSubmit = event => {
     event.preventDefault();
   const user = {
+      id: this.state.id[0],
       name: this.state.name,
       email: this.state.email,
+      password: this.state.password,
       address_line1: this.state.address_line1,
             address_line2: this.state.address_line2,
             city: this.state.city,
             state: this.state.state,
             zip: this.state.zip
     };
-  
+  console.log("and next is the payload object")
         var apiBaseUrl = "http://localhost:3001/api/";
         var payload = {
-            id: this.state.id,
+            id: this.state.id[0],
             name: this.state.name,
             email: this.state.email,
             password: this.state.password,
@@ -45,8 +57,10 @@ class EditUserPage extends React.Component {
             state: this.state.state,
             zip: this.state.zip
         }
+        console.log("and next is the api call")
         console.log(payload)
-        axios.put(apiBaseUrl + "users" + payload.id, user)
+        // axios.put(`http://localhost:3001/api/users/${this.state.id}`, body)
+        axios.put(apiBaseUrl + "users" , payload)
             .then(function (response) {
                 console.log(response);
             }).catch(function (error) {
