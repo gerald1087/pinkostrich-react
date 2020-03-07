@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router-dom'
 
+import "./Header.css"
+
 
 class Header extends Component {
 
@@ -9,7 +11,7 @@ class Header extends Component {
         this.props.history.push('/')
         window.location.reload()
     }
-    
+
 
     render() {
         return (
@@ -18,8 +20,8 @@ class Header extends Component {
                     <div>
                         <NavLink to="/pinkostrich" style={{ margin: '2em' }}>Home </NavLink>
                         <NavLink to="/products" style={{ margin: '2em' }}>Balloons </NavLink>
-                        <hr />
-                        <button type="submit" onClick={this.clickHandler.bind(this)} className="btn btn-primary">Logout</button>
+                        <NavLink to="/usersorders" style={{ margin: '2em' }}>Orders </NavLink>
+                        <button type="submit" id="logoutbutton" onClick={this.clickHandler.bind(this)} className="btn btn-primary">Logout</button>
                     </div>
 
                 </div>

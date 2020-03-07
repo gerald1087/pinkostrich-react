@@ -18,12 +18,13 @@ class Products extends React.Component {
 
     componentDidMount() {
         axios.get("http://localhost:3001/api/products")
-        .then(({ data }) => {
-            console.log(data)
-          this.setState(
-              {products: data
-          });
-        });
+            .then(({ data }) => {
+                console.log(data)
+                this.setState(
+                    {
+                        products: data
+                    });
+            });
     }
 
     render() {
@@ -32,23 +33,23 @@ class Products extends React.Component {
             return <ProductList key={index} {...product} user={this.state.user} />
         });
 
-        return(
+        return (
             <div>
                 <header>
-                    <Header/>
+                    <Header />
                 </header>
                 <div className="Product">
-                    
+
                     <Switch>
-                        <Route exact path={'/products'} render={ () => productsJSX }/>
-                        <Route path={'/products/:id'} render={props => (<Product {...props} user={this.state.user}/>)} />
+                        <Route exact path={'/products'} render={() => productsJSX} />
+                        <Route path={'/products/:id'} render={props => (<Product {...props} user={this.state.user} />)} />
                     </Switch>
-         
+
 
                 </div>
             </div>
         )
-}
+    }
 }
 
 export default Products

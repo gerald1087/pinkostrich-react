@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-import { Route } from 'react-router-dom';
-
+import { Link, Route, Router } from 'react-router-dom';
+import history from './components/layouts/history';
+import Button from '@material-ui/core/Button';
 
 class UsersOrders extends React.Component {
    
@@ -68,7 +69,7 @@ class UsersOrders extends React.Component {
 <small className="text-muted">Donec id elit non mi porta.</small>
 </a>
 </div>
-
+        <Button size="small"onClick={() => history.push('/profile')}>Go Back</Button>
             </div>
 
         )
