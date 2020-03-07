@@ -1,6 +1,9 @@
-import React from 'react'
-import axios from 'axios'
-import { Route } from 'react-router-dom';
+import React from 'react';
+import axios from 'axios';
+import { Link, Route, Router } from 'react-router-dom';
+// import history from './history';
+import history from './components/layouts/history';
+import Button from '@material-ui/core/Button';
 
 
 class EditUserPage extends React.Component {
@@ -8,6 +11,7 @@ class EditUserPage extends React.Component {
     constructor() {
         super();
         this.state = {
+            id: [],
             name: "",
             email: "",
             password: "",
@@ -19,23 +23,34 @@ class EditUserPage extends React.Component {
         }
     }
     handleChange = event => {
-    this.setState({ name: event.target.value });
+    this.setState({ 
+            id: event.target.value[0],
+            name: event.target.value,
+            email: event.target.value,
+            password: event.target.value,
+            address_line1: event.target.value,
+            address_line2: event.target,
+            city: event.target.value,
+            state: event.target.value,
+            zip: event.target.value });
   }
   handleSubmit = event => {
     event.preventDefault();
   const user = {
+      id: this.state.id[0],
       name: this.state.name,
       email: this.state.email,
+      password: this.state.password,
       address_line1: this.state.address_line1,
             address_line2: this.state.address_line2,
             city: this.state.city,
             state: this.state.state,
             zip: this.state.zip
     };
-  
+  console.log("and next is the payload object")
         var apiBaseUrl = "http://localhost:3001/api/";
         var payload = {
-            id: this.state.id,
+            id: this.state.id[0],
             name: this.state.name,
             email: this.state.email,
             password: this.state.password,
@@ -45,15 +60,19 @@ class EditUserPage extends React.Component {
             state: this.state.state,
             zip: this.state.zip
         }
+        console.log("and next is the api call")
         console.log(payload)
-        axios.put(apiBaseUrl + "users" + payload.id, user)
+        if(this.state.id === payload.id) {
+        // axios.put(`http://localhost:3001/api/users/${this.state.id}`, body)
+        axios.put(apiBaseUrl + "updateuser/" + user.id)
             .then(function (response) {
                 console.log(response);
             }).catch(function (error) {
                 console.log(error);
             });
             console.log("values", this.state.id, this.state.name, this.state.email, this.state.address_line1, this.state.password);
-        }
+        } else {alert("User isn't matching logged user records")}
+    }
 
         render() {
             return (
@@ -100,10 +119,12 @@ class EditUserPage extends React.Component {
                             
                         </div>
                         <button type="submit" className="btn btn-primary">Submit</button>
+                        <Button size="small"onClick={() => history.push('/profile')}>Go Back</Button>
+
                     </form>
                 </div>
             )
         }
     }
     
-    export default EditUserPage
+export default EditUserPage

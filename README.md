@@ -6,8 +6,9 @@ This Full-Stack psuedo Ecommerce project was built using several programming too
 React
 API/Axios
 NPM
-Postgres
+PostgreSQL
 SQL
 Sequelize
+JQuery
 
 
