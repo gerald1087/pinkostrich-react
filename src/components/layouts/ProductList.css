@@ -1,10 +1,4 @@
-#productlist {
-    display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-}
-
 #productimage {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
 }

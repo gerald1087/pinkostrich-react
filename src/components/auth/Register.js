@@ -1,6 +1,18 @@
 import React, { Component } from "react";
 import axios from 'axios'
 
+import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
+const useStyles = (theme => ({
+    root: {
+        '& > *': {
+            margin: theme.spacing(1),
+            width: 200,
+        },
+    },
+}));
 
 class Register extends Component {
 
@@ -53,59 +65,57 @@ class Register extends Component {
                 console.log(error);
             });
 
-            console.log("values", this.state.name, this.state.email, this.state.address_line1, this.state.password);
-        }
+        console.log("values", this.state.name, this.state.email, this.state.address_line1, this.state.password);
+    }
 
 
     render() {
+
+        const { classes } = this.props;
         return (
             <div>
-                <form>
-                    <div className="form-group">
-                        <label>Name</label>
-                        <input name="name" type="name" className="form-control" value={this.state.name} onChange={this.handleChange} />
-                        
+                <form className={classes.root} noValidate autoComplete="off">
+                    <div>
+                        <TextField id="outlined-basic" label="Full Name" variant="outlined" name="name" type="name" className="form-control" value={this.state.name} onChange={this.handleChange} />
                     </div>
-                    <div className="form-group">
-                        <label >Email address</label>
-                        <input name="email" type="email" className="form-control" value={this.state.email} onChange={this.handleChange}/>
-                        
+
+                    <div>
+                        <TextField id="outlined-basic" label="Email Address" variant="outlined" name="email" type="email" className="form-control" value={this.state.email} onChange={this.handleChange} />
                     </div>
-                    <div className="form-group">
-                        <label >Password</label>
-                        <input name="password" type="password" className="form-control" value={this.state.password} onChange={this.handleChange}/>
-                        
+
+                    <div>
+                        <TextField id="outlined-basic" label="Password" variant="outlined" name="password" type="password" className="form-control" value={this.state.password} onChange={this.handleChange} />
                     </div>
-                    <div className="form-group">
-                        <label >Address Line 1</label>
-                        <input name="address_line1" type="address" className="form-control" value={this.state.address_line1} onChange={this.handleChange}/>
-                        
+
+                    <div>
+                        <TextField id="outlined-basic" label="Address Line 1" variant="outlined" name="address_line1" type="address" className="form-control" value={this.state.address_line1} onChange={this.handleChange} />
                     </div>
-                    <div className="form-group">
-                        <label >Address Line 2</label>
-                        <input name="address_line2" type="address" className="form-control" value={this.state.address_line2} onChange={this.handleChange}/>
-                        
+
+                    <div>
+                        <TextField id="outlined-basic" label="Address Line 2" variant="outlined" name="address_line2" type="address" className="form-control" value={this.state.address_line2} onChange={this.handleChange} />
                     </div>
-                    <div className="form-group">
-                        <label >City</label>
-                        <input name="city" type="city" className="form-control" value={this.state.city} onChange={this.handleChange}/>
-                        
+
+                    <div>
+                        <TextField id="outlined-basic" label="City" variant="outlined" name="city" type="city" className="form-control" value={this.state.city} onChange={this.handleChange} />
                     </div>
-                    <div className="form-group">
-                        <label >State</label>
-                        <input name="state" type="state" className="form-control" value={this.state.state} onChange={this.handleChange}/>
-                        
+
+                    <div>
+                        <TextField id="outlined-basic" label="State" variant="outlined" name="state" type="state" className="form-control" value={this.state.state} onChange={this.handleChange} />
                     </div>
-                    <div className="form-group">
-                        <label >Zip</label>
-                        <input name="zip" type="zip" className="form-control" value={this.state.zip} onChange={this.handleChange}/>
-                        
+
+                    <div>
+                        <TextField id="outlined-basic" label="Zip Code" variant="outlined" name="zip" type="zip" className="form-control" value={this.state.zip} onChange={this.handleChange} />
                     </div>
-                    <button type="submit" onClick={(event) => this.handleClick(event)} className="btn btn-primary">Submit</button>
+                    <br />
+                    <div>
+                        <Button variant="outlined" color="secondary" type="submit" onClick={(event) => this.handleClick(event)} >
+                            Register
+                    </Button>
+                    </div>
                 </form>
             </div>
         )
     }
 }
 
-export default Register
+export default withStyles(useStyles)(Register)

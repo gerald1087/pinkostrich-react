@@ -1,34 +1,62 @@
 import React from 'react';
 import Header from "./Header"
+import Footer from "./Footer"
+
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const useStyles = theme => ({
+    root: {
+        '& > *': {
+            margin: theme.spacing(1),
+        },
+    },
+});
 
 class PinkOstrich extends React.Component {
 
     constructor(props) {
         super(props);
-    
+
         this.state = {
             user: this.user
         }
     }
 
-    clickHandler() {
+    profileClickHandler() {
         this.props.history.push('/profile')
     }
 
+    shopClickHandler() {
+        this.props.history.push('/products')
+    }
+
     render() {
-        return(
+        return (
             <div>
                 <header>
-                    <Header/>
+                    <Header />
                 </header>
-                <h1>Hey {this.props.user.name}!</h1>
-                <h4>Welcome to PinkOstrich, the balloon emporium...</h4>
-                <h4>Status: {this.props.loggedIn}</h4>
-                <button type="submit" onClick={this.clickHandler.bind(this)} className="btn btn-primary">Profile</button>
+                <h1>Welcome, {this.props.user.name}!</h1>
+                <h4>Buy something!</h4>
+                {/* <h4>Status: {this.props.loggedIn}</h4> */}
+                <div>
+                    <Button variant="outlined" color="secondary" type="submit" onClick={this.profileClickHandler.bind(this)} >
+                        Profile
+                        </Button>
+                </div>
+                <div>
+                    <Button variant="outlined" color="secondary" type="submit" onClick={this.shopClickHandler.bind(this)} >
+                        Shop
+                        </Button>
+                </div>
+                <footer>
+                    <Footer />
+                </footer>
             </div>
         )
     }
 }
 
 
-export default PinkOstrich;
+export default withStyles(useStyles)(PinkOstrich)
