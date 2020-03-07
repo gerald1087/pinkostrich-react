@@ -2,6 +2,15 @@ import React from 'react'
 import axios from 'axios'
 
 import Header from "./Header"
+
+import { Link, Route, Router } from 'react-router-dom';
+// import LinkButton from '/components/LinkButton';
+// // import PropTypes from 'prop-types'
+// import { Button, View, Text } from 'react-native';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createStackNavigator } from '@react-navigation/stack';
+import history from './history';
+
 import Footer from "./Footer"
 
 import { withStyles } from '@material-ui/core/styles';
@@ -31,10 +40,12 @@ const useStyles = (theme => ({
     },
 }));
 
+
 class Profile extends React.Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
 
         }
@@ -54,17 +65,50 @@ class Profile extends React.Component {
     handleDeleteClick(e) {
         e.preventDefault()
         axios.delete(`http://localhost:3001/api/deleteprofile/${this.props.user.id}`)
-            .then(response => {
-                alert("profile successfully deleted")
-                this.props.history.push('/')
-                window.location.reload()
-                console.log(response.data, "deleted message")
-            }
 
-            ).catch(error => {
-                console.log(error);
-            });
+        .then(response => {
+            alert("profile successfully deleted")
+            this.props.history.push('/')
+        window.location.reload()
+        console.log(response.data , "deleted message" )
+        }
+            
+        ).catch(error =>  {
+        console.log(error);
+        });
+        }
+//         handleEditClick (e) { 
+//     // const history = createHistory();
+
+// this.history.push('/edituserpage');
+// }
+
+
+
+//             localStorage.setItem("pageData", "Data Retrieved from axios request")
+//             window.open(("/edituserpage")
+//             )}
+//      componentWillMount() {
+// //   localStorage.pagedata= "your Data";
+// //   // set the data in state and use it through the component
+// //   localStorage.removeItem("pagedata");
+// //   // removing the data from localStorage.  Since if user clicks for another invoice it overrides this data
+// function EditUserPage({ navigation }) {
+//   return (
+//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//       <Text>Home Screen</Text>
+//       <Button
+//         title="Go to Details"
+//         onPress={() => navigation.EditUserPage('Edit Profile')}
+//       />
+//     </View>
+//   );
+// }
+
+// }
+           
     }
+
 
     render() {
         const { classes } = this.props;
@@ -73,7 +117,6 @@ class Profile extends React.Component {
                 <header>
                     <Header />
                 </header>
-
                 <div>
                     <Card className={classes.root}>
                         <CardContent>
@@ -99,6 +142,7 @@ class Profile extends React.Component {
                     </Card>
                 </div>
                 <br />
+                               <button type="submit" variant="btn btn-success" onClick={() => history.push('/edituserpage')}>EDIT</button>
                 <Button variant="outlined" color="secondary" type="submit" onClick={(event) => this.handleOrdersClick(event)} >
                     View Orders
                         </Button>
@@ -108,6 +152,7 @@ class Profile extends React.Component {
                 <footer>
                     <Footer />
                 </footer>
+
             </div>
 
 

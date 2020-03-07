@@ -14,7 +14,7 @@ class Navbar extends Component {
                             <i className="material-icons"></i>
                             Home
                         </Link>
-                        <Link to="/user" style={{ fontFamily: "monospace" }} className="col s5 brand-logo center black-text">
+                        <Link to="/user/:id" style={{ fontFamily: "monospace" }} className="col s5 brand-logo center black-text">
                             <i className="material-icons"></i>
                             Profile
                         </Link>
