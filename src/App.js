@@ -9,6 +9,7 @@ import Products from "./components/layouts/Products";
 import SellProduct from "./components/layouts/SellProduct";
 import Product from "./components/layouts/Product"
 import Profile from "./components/layouts/Profile"
+import UpdateProfile from "./components/layouts/UpdateProfile"
 
 
 
@@ -58,6 +59,7 @@ class App extends Component {
           <Route exact path="/products" render={props => (<Products {...props} user={this.state.user} loggedIn={this.state.loggedIn} />)} />
           <Route exact path="/products/:id" render={props => (<Product {...props} user={this.state.user} loggedIn={this.state.loggedIn} />)} />
           <Route exact path="/profile" render={props => (<Profile {...props} user={this.state.user} loggedIn={this.state.loggedIn} />)} />
+          <Route exact path="/updateprofile" render={props => (<UpdateProfile {...props} user={this.state.user} loggedIn={this.state.loggedIn} />)} />
           <Route
             exact
             path={"/pinkostrich"}

@@ -40,6 +40,10 @@ class Profile extends React.Component {
         }
     }
 
+    handleUpdateClick() {
+        this.props.history.push('/updateprofile')
+    }
+
     handleOrdersClick(e) {
         e.preventDefault()
         axios.get(`http://localhost:3001/api/orders/${this.props.user.id}`)
@@ -104,6 +108,9 @@ class Profile extends React.Component {
                         </Button>
                 <Button variant="outlined" color="secondary" type="submit" onClick={(event) => this.handleDeleteClick(event)} >
                     Delete Profile
+                        </Button>
+                        <Button variant="outlined" color="secondary" type="submit" onClick={(event) => this.handleUpdateClick(event)} >
+                    Update Profile
                         </Button>
                 <footer>
                     <Footer />
