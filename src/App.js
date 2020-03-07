@@ -11,6 +11,7 @@ import SellProduct from "./components/layouts/SellProduct";
 import Product from "./components/layouts/Product"
 import Profile from "./components/layouts/Profile"
 import UpdateProfile from "./components/layouts/UpdateProfile"
+import User from "./User"
 
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import history from './components/layouts/history';
