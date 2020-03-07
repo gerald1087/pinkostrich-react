@@ -1,10 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 
-import Header from "./Header";
-// import { Link, Route, Router } from 'react-router-dom';
+import Header from "./Header"
+import { Link, Route, Router } from 'react-router-dom';
+// import LinkButton from '/components/LinkButton';
+// // import PropTypes from 'prop-types'
+// import { Button, View, Text } from 'react-native';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createStackNavigator } from '@react-navigation/stack';
 import history from './history';
-import Footer from "./Footer";
+import Footer from "./Footer"
 
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -75,7 +80,6 @@ class Profile extends React.Component {
                 <header>
                     <Header />
                 </header>
-
                 <div>
                     <Card className={classes.root}>
                         <CardContent>
@@ -103,6 +107,7 @@ class Profile extends React.Component {
                 <br />
                 <button type="submit" variant="btn btn-success" onClick={() => history.push('/edituserpage')}>EDIT</button>
 
+                               <button type="submit" variant="btn btn-success" onClick={() => history.push('/edituserpage')}>EDIT</button>
                 <Button variant="outlined" color="secondary" type="submit" onClick={(event) => this.handleOrdersClick(event)} >
                     View Orders
                         </Button>

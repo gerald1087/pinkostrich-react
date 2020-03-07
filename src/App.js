@@ -3,16 +3,18 @@ import EditUserPage from "./EditUserPage"
 import UsersOrders from "./UsersOrders"
 import ViewOrder from "./ViewOrder"
 import { Switch, Route, Router } from "react-router-dom";
-// import Navbar from "./components/layouts/Navbar";
+import Navbar from "./components/layouts/Navbar";
 import Home from "./components/layouts/Home";
 import PinkOstrich from "./components/layouts/PinkOstrich";
 import Products from "./components/layouts/Products";
 import SellProduct from "./components/layouts/SellProduct";
 import Product from "./components/layouts/Product"
 import Profile from "./components/layouts/Profile"
-// import ProtectedRoute from "./components/auth/ProtectedRoute";
-import history from './components/layouts/history';
 
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import history from './components/layouts/history';
+// import LinkButton from '/components/LinkButton'
+// import PropTypes from 'prop-types'
 
 class App extends Component {
 
