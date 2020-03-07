@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import { Route } from 'react-router-dom';
-// import User from './User';
+import history from './components/layouts/history';
+import Button from '@material-ui/core/Button';
 
 class ViewOrder extends React.Component {
    
@@ -49,6 +50,7 @@ class ViewOrder extends React.Component {
   </div>
 </div>
   <a href="/usersorders" className="card-link">Back to All Orders</a>
+  <Button size="small"onClick={() => history.push('/profile')}>Go Back</Button>
             </div>
            
         )}

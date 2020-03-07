@@ -1,6 +1,9 @@
-import React from 'react'
-import axios from 'axios'
-import { Route } from 'react-router-dom';
+import React from 'react';
+import axios from 'axios';
+import { Link, Route, Router } from 'react-router-dom';
+// import history from './history';
+import history from './components/layouts/history';
+import Button from '@material-ui/core/Button';
 
 
 class EditUserPage extends React.Component {
@@ -8,7 +11,7 @@ class EditUserPage extends React.Component {
     constructor() {
         super();
         this.state = {
-            id: [0],
+            id: [],
             name: "",
             email: "",
             password: "",
@@ -59,15 +62,17 @@ class EditUserPage extends React.Component {
         }
         console.log("and next is the api call")
         console.log(payload)
+        if(this.state.id === payload.id) {
         // axios.put(`http://localhost:3001/api/users/${this.state.id}`, body)
-        axios.put(apiBaseUrl + "users" , payload)
+        axios.put(apiBaseUrl + "updateuser/" + user.id)
             .then(function (response) {
                 console.log(response);
             }).catch(function (error) {
                 console.log(error);
             });
             console.log("values", this.state.id, this.state.name, this.state.email, this.state.address_line1, this.state.password);
-        }
+        } else {alert("User isn't matching logged user records")}
+    }
 
         render() {
             return (
@@ -114,10 +119,12 @@ class EditUserPage extends React.Component {
                             
                         </div>
                         <button type="submit" className="btn btn-primary">Submit</button>
+                        <Button size="small"onClick={() => history.push('/profile')}>Go Back</Button>
+
                     </form>
                 </div>
             )
         }
     }
     
-    export default EditUserPage
+export default EditUserPage

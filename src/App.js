@@ -46,13 +46,10 @@ class App extends Component {
     this.props.history.push('/')
   }
 
-
-
   render() {
     return (
 
       <div className="App">
-
    <Router history={history}>        
    <Switch>
           <Route 
@@ -67,7 +64,6 @@ class App extends Component {
           <Route exact path="/profile" render={props => (<Profile {...props} user={this.state.user} loggedIn={this.state.loggedIn}/>)} />
           <Route exact path="/vieworder" render={props => (<Profile {...props} user={this.state.user} loggedIn={this.state.loggedIn} order_id={this.state.order_id}/>)} />
       
-          {/* <Route exact path="/users/:id" component={User} /> */}
           <Route exact path="/edituserpage" component={EditUserPage} />
           <Route exact path="/usersorders" component={UsersOrders} />
           <Route exact path="/vieworder" component={ViewOrder} />    
@@ -77,15 +73,10 @@ class App extends Component {
           render={props => (
           <PinkOstrich {...props} user={this.state.user} loggedIn={this.state.loggedIn} />
           )} />
-
         </Switch>
         </Router>
-
       </div>
-
-
     );
   }
 }
 export default App;
-

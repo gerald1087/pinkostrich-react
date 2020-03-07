@@ -29,7 +29,7 @@ class Home extends Component {
             <div>
                 <div className="title">
                     <h1>PinkOstrich.com</h1>
-                    <h4>The baloon emporium!</h4>
+                    <h4>The balloon emporium!</h4>
                     <br />
                     <br />
                 </div>
