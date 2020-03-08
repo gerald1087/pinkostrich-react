@@ -3,6 +3,8 @@ import axios from 'axios';
 import ProductList from './ProductList';
 import Product from './Product';
 import Header from "./Header"
+import history from './history';
+
 
 import { Switch, Route } from 'react-router-dom'
 
@@ -44,6 +46,8 @@ class Products extends React.Component {
                         <Route exact path={'/products'} render={() => productsJSX} />
                         <Route path={'/products/:id'} render={props => (<Product {...props} user={this.state.user} />)} />
                     </Switch>
+                    <br />
+                    <button type="submit" variant="btn btn-success" onClick={() => history.push('/sellproduct')}>List a Product</button>
 
 
                 </div>

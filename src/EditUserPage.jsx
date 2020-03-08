@@ -71,7 +71,7 @@ class EditUserPage extends React.Component {
                 console.log(error);
             });
             console.log("values", this.state.id, this.state.name, this.state.email, this.state.address_line1, this.state.password);
-        } else {alert("User isn't matching logged user records")}
+        } else {alert("Sorry, edit user isn't completed at this time!")}
     }
 
         render() {

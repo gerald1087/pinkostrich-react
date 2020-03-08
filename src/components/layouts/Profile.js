@@ -105,7 +105,6 @@ class Profile extends React.Component {
                     </Card>
                 </div>
                 <br />
-                <button type="submit" variant="btn btn-success" onClick={() => history.push('/edituserpage')}>EDIT</button>
 
                                <button type="submit" variant="btn btn-success" onClick={() => history.push('/edituserpage')}>EDIT</button>
                 <Button variant="outlined" color="secondary" type="submit" onClick={(event) => this.handleOrdersClick(event)} >

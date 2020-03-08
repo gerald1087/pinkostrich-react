@@ -1,5 +1,10 @@
 import React from 'react';
 import axios from 'axios'
+import Header from "./Header"
+import history from './history';
+import Footer from "./Footer"
+import Button from '@material-ui/core/Button';
+
 
 class SellProduct extends React.Component {
 
@@ -29,15 +34,25 @@ class SellProduct extends React.Component {
         axios.post(apiBaseUrl + "products", payload)
             .then(function (data) {
                 console.log(data);
+                alert('Listing Created! Hit Go Back')
+                    window.location.reload()
             }).catch(function (error) {
                 console.log(error);
             });
             console.log("values", this.state.name);
+            
         }
 
     render() {
         return (
             <div>
+            <Header>
+
+            </Header>
+               <div className="pic">
+            <img src="https://lh3.googleusercontent.com/proxy/oB6eVEPsQHzLpY0bn8LaXrhvcM7yv2BOB7NwRaQjZjCTUQvRli4cmJucwHhEZT5P2-2MJRki13rTcgnsJvsucGlgNsEoZV0ykz_1FH0FRNnTEkXRADXrvBqU3du6jg"
+                align="center" height="100" width="100" alt="Wild Ostrich"/>
+            </div>
                 <form>
                     <div className="form-group">
                         <label>Name</label>
@@ -70,6 +85,8 @@ class SellProduct extends React.Component {
                         </div>
                     <button type="submit" onClick={(event) => this.handleClick(event)} className="btn btn-primary">Submit</button>
                 </form>
+                <Button size="small"onClick={() => history.push('/products')}>Go Back</Button>
+           <Footer></Footer>
             </div>
         )
     }
