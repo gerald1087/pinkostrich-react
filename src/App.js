@@ -10,6 +10,7 @@ import Products from "./components/layouts/Products";
 import SellProduct from "./components/layouts/SellProduct";
 import Product from "./components/layouts/Product"
 import Profile from "./components/layouts/Profile"
+import User from "./User"
 
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import history from './components/layouts/history';
