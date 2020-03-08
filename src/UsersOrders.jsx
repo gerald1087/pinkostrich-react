@@ -25,6 +25,7 @@ class UsersOrders extends React.Component {
         axios.get(apiBaseUrl + "orders", payload.id)
             .then(function (response) {
                 console.log(response);
+                alert("Sorry, this order's page isn't yet complete!")
             }).catch(function (error) {
                 console.log(error);
             });

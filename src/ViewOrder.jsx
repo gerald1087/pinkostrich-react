@@ -27,6 +27,7 @@ class ViewOrder extends React.Component {
         axios.get(apiBaseUrl + "users", payload.user_id)
             .then(function (response) {
                 console.log(response);
+                alertalert("Sorry, viewing your order isn't yet possible!")
             }).catch(function (error) {
                 console.log(error);
             });

@@ -53,7 +53,7 @@ class Product extends React.Component {
         axios.post(apiBaseUrl + 'orders', payload)
             .then(response => {
                 alert('Order Successful!')
-                window.location = '/products'
+                // window.location = '/products'
             }).catch(error => {
                 console.log(error);
             });
